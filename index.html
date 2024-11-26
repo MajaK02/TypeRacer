@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/style.css" />
+
+    <!-- Google Fonts -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+    </style>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/f4d3164857.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>TypeRacer</title>
+  </head>
+
+  <body>
+
+    <!-- Header section -->
+    <header>
+      <section class="d-flex flex-column align-items-center">
+        <h1>TypeRacer</h1>
+        <button class="btn btn-info mt-2">Instructions</button>
+      </section>
+    </header>
+
+    <!-- Responsive grid using Bootstrap-->
+    <main class="container mt-4">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="p-3 border bg-light">Column 1</div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 border bg-light">Column 2</div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-3 border bg-light">Column 3</div>
+        </div>
+      </div>
+
+      <!-- Test area -->
+      <section class="mt-4">
+        <h2>Test Area</h2>
+        <div class="p-3 border bg-light">
+          <p>Type your text here:</p>
+          <textarea class="form-control" rows="5"></textarea>
+          <button class="btn btn-primary mt-2">Start Test</button>
+        </div>
+      </section>
+
+      <!-- Results area -->
+      <section class="mt-4">
+        <h2>Results</h2>
+        <div class="p-3 border bg-light">
+          <p>Your results will be displayed here.</p>
+          <div id="results" class="p-3 border bg-white"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
