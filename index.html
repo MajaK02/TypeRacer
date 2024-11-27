@@ -20,9 +20,6 @@
 
   <body>
     <!-- Header section -->
-    <!-- Inside the body for the header: "I am building a typing speed tester that looks good across all device types. 
-     Please add a header area, which will contain the name 'TypeRacer' and an instructions button, which we'll wire up to instructions later."
-     -->
     <header>
       <div class="container">
         <div class="row">
@@ -37,20 +34,12 @@
     </header>
 
     <!-- Responsive grid using Bootstrap-->
-
-    <!-- Difficulty selector -->
-     <!-- Below the header build the responsive grid for the test area and results area: "I am building a typing speed tester that looks good across all devices. 
-      Please build a grid with two columns. On Smaller screens, the columns should stack on top of each other. 
-      From medium screen sizes and up, the left column should be two-thirds of the width of their container, the right column one-third.".
-    -->
     <main>
       <div class="container my-5">
         <div class="row">
           <div class="col-md-8">
             <div class="input-group mb-3">
-              <label class="input-group-text" for="difficulty"
-                >Select Difficulty</label
-              >
+              <label class="input-group-text" for="difficulty">Select Difficulty</label>
               <select class="form-select" id="difficulty">
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
@@ -59,49 +48,28 @@
             </div>
 
             <!-- test area -->
-             <!-- Inside the test area column: "Please create a dropdown menu using the Bootstrap input-group functionality. 
-              The label for the menu is "Select Difficulty"; the options in the dropdown should be Easy, Medium and Hard.".
-            -->
             <div class="test-area">
-              <p class="lead">
-                Test your typing speed by typing the text shown below:
-              </p>
-              <div class="mb-3 p-3 border" id="sample-text">
-                The cat sat on the mat.
-              </div>
+              <p class="lead">Test your typing speed by typing the text shown below:</p>
+              <div class="mb-3 p-3 border" id="sample-text">The cat sat on the mat.</div>
             </div>
+
             <!-- User input area -->
-             <!-- Inside the test area column, below the dropdown menu: "For my typing speed tester, please add some sample text for a user to type, a text box for them to type in. 
-              Under the text box to type in, add buttons to start, stop and retry the test.".
-            -->
             <div class="mb-3">
-              <label class="form-label visually-hidden" for="user-input"
-                >Type Here</label
-              >
+              <label class="form-label visually-hidden" for="user-input">Type Here</label>
               <textarea
                 class="form-control"
                 id="user-input"
                 rows="6"
-                placeholder="Click the start button to begin the test"
+                placeholder="Start typing to begin the test"
               ></textarea>
             </div>
             <div class="mb-3 text-center">
-              <button class="btn btn-lg btn-outline-orange" id="start-btn">
-                Start
-              </button>
-              <button class="btn btn-lg btn-outline-orange" id="stop-btn">
-                Stop
-              </button>
-              <button class="btn btn-lg btn-outline-orange" id="retry-btn">
-                Retry
-              </button>
+              <button class="btn btn-lg btn-outline-orange" id="start-btn" disabled>Start</button>
+              <button class="btn btn-lg btn-outline-orange" id="retry-btn">Retry</button>
             </div>
           </div>
 
           <!-- Results section -->
-           <!-- Inside the results area column: "I am building a typing tester site. Please add a results area to display the level, time and wpm. 
-            Add spans with IDs to insert the calculated values later with JavaScript.".
-          -->
           <div class="col-md-4">
             <div id="results-area" class="text-center">
               <h2>Results</h2>
@@ -119,6 +87,33 @@
         </div>
       </div>
     </main>
+
+    <!-- Instructions Modal -->
+    <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="instructionsModalLabel">Instructions</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Welcome to TypeRacer! Follow these instructions to complete the typing test:</p>
+            <ol>
+              <li>Select the difficulty level from the dropdown menu.</li>
+              <li>Click the "Start" button to begin the test.</li>
+              <li>Type the text shown in the sample text area as quickly and accurately as possible.</li>
+              <li>The test will start automatically when you begin typing.</li>
+              <li>Press "Enter" to stop the test and see your results.</li>
+              <li>Your results will show the time taken and words per minute (WPM).</li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

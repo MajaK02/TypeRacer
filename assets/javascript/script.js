@@ -20,13 +20,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const difficultySelect = document.getElementById('difficulty');
     const sampleTextDiv = document.getElementById('sample-text');
     const startButton = document.getElementById('start-btn');
-    const stopButton = document.getElementById('stop-btn');
+    const retryButton = document.getElementById('retry-btn');
     const timeDisplay = document.getElementById('time');
     const userInput = document.getElementById('user-input');
     const levelDisplay = document.getElementById('level');
     const wpmDisplay = document.getElementById('wpm');
+    const instructionsButton = document.getElementById('instructions-btn');
 
     let startTime, endTime;
+    let testStarted = false;
 
     function getRandomText(textArray) {
         const randomIndex = Math.floor(Math.random() * textArray.length);
@@ -50,8 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function startTest() {
         startTime = new Date();
+        testStarted = true;
         startButton.disabled = true;
-        stopButton.disabled = false;
+        retryButton.disabled = true;
         userInput.disabled = false;
         userInput.value = ''; // Clear the input area
         userInput.focus();
@@ -65,8 +68,19 @@ document.addEventListener('DOMContentLoaded', function() {
         displayResults(timeTaken, wpm);
 
         startButton.disabled = false;
-        stopButton.disabled = true;
+        retryButton.disabled = false;
         userInput.disabled = true;
+        testStarted = false;
+    }
+
+    function retryTest() {
+        updateSampleText();
+        userInput.value = '';
+        userInput.disabled = false;
+        userInput.focus();
+        startButton.disabled = false;
+        retryButton.disabled = true;
+        testStarted = false;
     }
 
     function calculateWPM(timeTaken) {
@@ -113,10 +127,28 @@ document.addEventListener('DOMContentLoaded', function() {
         sampleTextDiv.innerHTML = highlightedText.trim();
     }
 
+    function handleUserInput(event) {
+        if (!testStarted) {
+            startTest();
+        }
+        highlightText();
+
+        if (event.key === 'Enter') {
+            stopTest();
+        }
+    }
+
+    function showInstructions() {
+        const instructionsModal = new bootstrap.Modal(document.getElementById('instructionsModal'));
+        instructionsModal.show();
+    }
+
     difficultySelect.addEventListener('change', updateSampleText);
     startButton.addEventListener('click', startTest);
-    stopButton.addEventListener('click', stopTest);
-    userInput.addEventListener('input', highlightText);
+    retryButton.addEventListener('click', retryTest);
+    userInput.addEventListener('input', handleUserInput);
+    userInput.addEventListener('keydown', handleUserInput);
+    instructionsButton.addEventListener('click', showInstructions);
 
     // Initialize with a random text from the default difficulty level
     updateSampleText();
